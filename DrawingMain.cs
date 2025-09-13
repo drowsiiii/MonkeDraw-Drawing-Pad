@@ -749,6 +749,8 @@ namespace MonkeDrawing
             // subscribe to join/leave room events
             NetworkSystem.Instance.OnMultiplayerStarted += JoinedRoom;
             NetworkSystem.Instance.OnReturnedToSinglePlayer += OnLeaveRoom;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable()
+            { { "drowsiiiMonkeDraw", "drowsiiidrawingpad" } }); // HEAD-MODAFACTIONS!!!!!!!!
 
 
 
@@ -976,5 +978,6 @@ namespace MonkeDrawing
 
     }
 }
+
 
 
