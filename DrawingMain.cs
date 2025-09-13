@@ -749,8 +749,6 @@ namespace MonkeDrawing
             // subscribe to join/leave room events
             NetworkSystem.Instance.OnMultiplayerStarted += JoinedRoom;
             NetworkSystem.Instance.OnReturnedToSinglePlayer += OnLeaveRoom;
-            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable()
-            { { "drowsiiiMonkeDraw", "drowsiiidrawingpad" } }); // HEAD-MODAFACTIONS!!!!!!!!
 
 
 
@@ -768,7 +766,7 @@ namespace MonkeDrawing
 
         void FixedUpdate()
         {
-            if (ControllerInputPoller.instance.rightGrab || Mouse.current.leftButton.isPressed)
+            if (ControllerInputPoller.instance.rightGrab || Mouse.current.leftButton.isPressed && allowed)
             {
 
                 GameObject CreatePrimitive(PrimitiveType type) // REDDIT found on there
@@ -841,7 +839,7 @@ namespace MonkeDrawing
 
             }
 
-            if (Mouse.current.rightButton.isPressed || ControllerInputPoller.instance.leftControllerPrimaryButton)
+            if (Mouse.current.rightButton.isPressed || ControllerInputPoller.instance.leftControllerPrimaryButton && allowed)
                 {
                     if (padmade)
                     {
@@ -858,7 +856,7 @@ namespace MonkeDrawing
                     }
                
             }
-            else if (padmade)
+            else if (padmade && allowed)
             {
                 Destroy(MainBaseGameOBJ);
                 padmade = false;
@@ -980,4 +978,4 @@ namespace MonkeDrawing
 }
 
 
-
+// HOLY FUCK BASICALLY 1K LINES!!
