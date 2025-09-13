@@ -841,14 +841,14 @@ namespace MonkeDrawing
 
             if (Mouse.current.rightButton.isPressed || ControllerInputPoller.instance.leftControllerPrimaryButton && allowed)
                 {
-                    if (padmade)
+                    if (padmade && allowed)
                     {
                         MainBaseGameOBJ.transform.position = Vector3.Lerp(MainBaseGameOBJ.transform.position,
                             GorillaTagger.Instance.leftHandTransform.position, Time.deltaTime * 6f);
                         MainBaseGameOBJ.transform.localRotation =
                             GorillaTagger.Instance.leftHandTransform.localRotation * Quaternion.Euler(180f, 90f, 450f);
                     }
-                    else
+                    else if (allowed)
                     {
                         Create();
                         padmade = true;
