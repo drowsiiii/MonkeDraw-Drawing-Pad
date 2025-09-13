@@ -786,10 +786,12 @@ namespace MonkeDrawing
                 if (DontCollide)
                 {
                     cube = CreatePrimitive(Type);
+                    cube.name = "DrawingPartical";
                 }
                 else
                 {
                     cube = GameObject.CreatePrimitive(Type);
+                    cube.name = "DrawingPartical";
                 }
 
                 cube.transform.position = GorillaTagger.Instance.rightHandTransform.position;
@@ -877,6 +879,16 @@ namespace MonkeDrawing
         {
             allowed = false;
             // disable/cleanup your mod here
+            foreach (var cube in FindObjectsOfType<GameObject>())
+            {
+                if (cube.name == "DrawingPartical")
+                {
+                    cube.Destroy();
+                    
+                }
+               
+            }
+            Destroy(MainBaseGameOBJ);
         }
 
         private void OnGUI()
